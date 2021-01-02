@@ -125,7 +125,7 @@ def dataset2(country=None, category=None, metric=None):
     barGraph2Data = barGraph2Data.loc[:, [
         "views", "comments", "likes", "dislikes", "country", "categoryId"]]
 
-    # Create a table (df) of metric values vs the count of each valus for bargraph
+    # Create a table (df) of metric values vs the count of each value for bargraph
     metric_values = ["views", "comments", "likes", "dislikes"]
     metricMaxValues = []
     n = 0

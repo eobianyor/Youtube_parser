@@ -14,6 +14,7 @@
 
 </head>
 
+<!-- BUILD THE NAV BAR WITH DROPDOWN MENUS AND A FILTER BUTTON -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">YOUTUBE SLICER</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -22,29 +23,32 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav" id="filters">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+      <li class="nav-item">
+        <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Select Country
-        </a>
-        <select class="dropdown-menu" id="countrySelection" aria-labelledby="navbarDropdownMenuLink">
-          <!-- onchange="optionChanged(this.value)"> -->
-          <option value="">List of Countries</option>
-          <!-- <option id="US" class="dropdown-item" value="United States">United States</option>
-          <option id="CA" class="dropdown-item" value="Canada">Canada</option>
-          <option id="MX" class="dropdown-item" value="Mexico">Mexico</option>
-          <option id="BR" class="dropdown-item" value="Brazil">Brazil</option> -->
-        </select>
+        </a> -->
+        <div class="nav-link">
+          <select class="form-control" id="countrySelection">
+            <!-- onchange="optionChanged(this.value)"> -->
+            <option value="">Select a Country</option>
+            <!-- <option id="US" class="dropdown-item" value="United States">United States</option>
+              <option id="CA" class="dropdown-item" value="Canada">Canada</option>
+              <option id="MX" class="dropdown-item" value="Mexico">Mexico</option>
+              <option id="BR" class="dropdown-item" value="Brazil">Brazil</option> -->
+          </select>
+        </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+        <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Select Video Category
-        </a>
-        <select class="dropdown-menu" id="categorySelection" aria-labelledby="navbarDropdownMenuLink">
-          <!-- onchange="optionChanged(this.value)"> -->
-          <option value="">List of Categories</option>
-          <!-- <option id="Nonprofits" class="dropdown-item" value="Nonprofits & Activism">Nonprofits & Activism</option>
+        </a> -->
+        <div class="nav-link">
+          <select class="form-control" id="categorySelection">
+            <!-- onchange="optionChanged(this.value)"> -->
+            <option value="">Select Video Category</option>
+            <!-- <option id="Nonprofits" class="dropdown-item" value="Nonprofits & Activism">Nonprofits & Activism</option>
           <option id="Autos" class="dropdown-item" value="Autos & Vehicles">Autos & Vehicles</option>
           <option id="Comedy" class="dropdown-item" value="Comedy">Comedy</option>
           <option id="Education" class="dropdown-item" value="Education">Education</option>
@@ -59,37 +63,44 @@
           <option id="Science" class="dropdown-item" value="Science & Technology">Science & Technology</option>
           <option id="Sports" class="dropdown-item" value="Sports">Sports</option>
           <option id="Travel" class="dropdown-item" value="Travel & Events">Travel & Events</option> -->
-        </select>
+          </select>
+        </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+        <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Select Metric
-        </a>
-        <select class="dropdown-menu" id="metricSelection" aria-labelledby="navbarDropdownMenuLink">
-          <!-- onchange="optionChanged(this.value)"> -->
-          <option value="">Metric Selection</option>
-          <!-- <option id="view" class="dropdown-item" value="Views">Views</option>
+        </a> -->
+        <div class="nav-link">
+          <select class="form-control" id="metricSelection">
+            <!-- onchange="optionChanged(this.value)"> -->
+            <option value="">Metric Selection</option>
+            <!-- <option id="view" class="dropdown-item" value="Views">Views</option>
           <option id="like" class="dropdown-item" value="Likes">Likes</option>
           <option id="dislike" class="dropdown-item" value="Dislikes">Dislikes</option>
           <option id="comment" class="dropdown-item" value="Comments">Comments</option> -->
-        </select>
+          </select>
+        </div>
       </li>
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Select Year
         </a>
-        <select class="dropdown-menu" id="yearSelection" aria-labelledby="navbarDropdownMenuLink">
-          <!-- onchange="optionChanged(this.value)"> -->
-      <option value="">List of Years</option>
-      <!-- <option id="2018" class="dropdown-item" value="2018">2018</option>
-          <option id="2019" class="dropdown-item" value="2019">2019</option>
-          <option id="2020" class="dropdown-item" value="2020">2020</option> -->
-      </select>
+        <div class="nav-link">
+          <select class="form-control" id="yearSelection">
+            onchange="optionChanged(this.value)">
+            <option value="">Select a Year</option>
+            <option id="2018" class="dropdown-item" value="2018">2018</option>
+            <option id="2019" class="dropdown-item" value="2019">2019</option>
+            <option id="2020" class="dropdown-item" value="2020">2020</option>
+          </select>
+        </div>
       </li> -->
       <li>
-        <button type="button" id="filter-btn" class="btn btn-primary">FILTER</button>
+        <div class="nav-link">
+          <button type="button" id="filter-btn" class="btn btn-primary">FILTER</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -102,8 +113,8 @@
 </nav>
 
 <body>
-
-  <!-- Jinah (12/10 3 pm ---- building body part to display the graphs-->
+  <!-- BUILD FRAMEWORK FOR 2 BAR GRAPHS, AND 2 LINE CHARTS (ONLY 1 IS IN USE) -->
+  <!-- Jinah (12/10 3 pm ---- building body part to display the graphs)-->
   <div class="container">
     <div class="row">
       <hr>
@@ -127,10 +138,13 @@
     </div>
     <hr>
 
-    <!-- EmekaO (12/10 7 pm ---- building Top10Table)-->
+    <!-- BUILD FRAMEWORK FOR TOP 10 TABLE -->
     <div class="container">
       <table class="table table-hover table-dark" class="col-md-12">
         <thead>
+          <tr>
+            <th colspan="10">TOP 10 VIDEOS IN SELECTED CATERGORY FOR SELECTED COUNTRY</th>
+          </tr>
           <tr>
             <th scope="col">Country</th>
             <th scope="col">CategoryId</th>

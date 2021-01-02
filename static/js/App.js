@@ -106,9 +106,9 @@ button.on("click", function () {
 
   // Put in default values incase user clicks the filter button before making selections
   if (currentCountry == "" & currentCategory == "" & currentMetric == "") {
-    currentCountry = "BR";
+    currentCountry = "US";
     currentCategory = "Sports";
-    currentMetric = "likes";
+    currentMetric = "views";
   }
   console.log(currentCountry, currentCategory, currentMetric);
   // console.log(`finished input values`);
@@ -128,7 +128,7 @@ function barPlot(inputcountry, inputmetric) {
   // console.log(`started barplot`)
   url = `/dataset1/${inputcountry}/${inputmetric}`
   d3.json(url).then(function (response) {
-    console.log(response)
+    // console.log(response)
 
     //Jinah: building the bar chart using Plotly
 
@@ -140,10 +140,10 @@ function barPlot(inputcountry, inputmetric) {
     //     return entry;
     //   };
     // });
-    console.log(x_value);
+    // console.log(x_value);
 
     var y_value = Object.values(response);
-    console.log(y_value);
+    // console.log(y_value);
 
     var trace1 = {
       x: x_value,
@@ -190,10 +190,10 @@ function barPlot2(inputcountry, inputcategory, inputmetric) {
     //Jinah: building the bar chart using Plotly
 
     var x_value = Object.values(response.Metric_Values);
-    console.log(x_value);
+    // console.log(x_value);
 
     var y_value = Object.values(response.Max_Value);
-    console.log(y_value);
+    // console.log(y_value);
 
     var trace2 = {
       x: x_value,
@@ -283,14 +283,44 @@ function grabTableData(inputcountry, inputcategory, inputmetric) {
   d3.json(url).then(function (response) {
 
     var top10TableData = response
-    console.log(top10TableData)
-    buildTable(top10TableData)
+    // console.log(top10TableData)
+    buildTable(top10TableData, inputcountry, inputcategory, inputmetric)
   })
   // console.log(`finished grabTableData`)
 }
 // // // // ==================== FUNCTION TO BUILD TABLE ==================== // // // //
-function buildTable(data) {
+function buildTable(data, currentCountry, currentCategory, currentMetric) {
   // console.log(`started buildTable`)
+
+  // To CAPITALIZE and get correct tense for current metric in the table header statement
+  if (currentMetric == "views") { tableTitleMetric = "MOST VIEWED" }
+  else if (currentMetric == "likes") { tableTitleMetric = "MOST LIKED" }
+  else if (currentMetric == "dislikes") { tableTitleMetric = "MOST DISLIKED" }
+  else if (currentMetric == "comments") { tableTitleMetric = "MOST COMMENTED ON" }
+
+  tableTitleCategory = currentCategory.toUpperCase();
+
+  // Table head
+  var tableTitle = `TOP 10 ${tableTitleMetric} VIDEOS IN ${tableTitleCategory} CATERGORY FOR ${currentCountry}`
+  teehead = d3.select("thead");
+  teehead.html("");
+  // // Append the 1st row of the header (Table title)
+  var thRow = teehead.append("tr");
+  thRow.append("th").text(tableTitle);
+  // Append the 2nd row of the header (Table title)
+  var thRow = teehead.append("tr");
+  thRow.append("th").text("Country")
+  thRow.append("th").text("CategoryId")
+  thRow.append("th").text("Title")
+  thRow.append("th").text("Channel")
+  thRow.append("th").text("Views")
+  thRow.append("th").text("Comments")
+  thRow.append("th").text("Trending Date")
+  thRow.append("th").text("Likes")
+  thRow.append("th").text("Dislikes")
+  thRow.append("th").text("Video Link")
+
+  // Table body
   teebody = d3.select("tbody");
   teebody.html("");
   var table = d3.select("#summary-table");
@@ -298,7 +328,7 @@ function buildTable(data) {
   var trow;
 
   for (var i = 0; i < data.length; i++) {
-    console.log(data[i].video_id)
+    // console.log(data[i].video_id)
     trow = teebody.append("tr");
     trow.append("td").text(data[i].country);
     trow.append("td").text(data[i].categoryId);
