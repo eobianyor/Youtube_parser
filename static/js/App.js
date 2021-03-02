@@ -293,20 +293,20 @@ function buildTable(data, currentCountry, currentCategory, currentMetric) {
   // console.log(`started buildTable`)
 
   // To CAPITALIZE and get correct tense for current metric in the table header statement
-  if (currentMetric == "views") { tableTitleMetric = "MOST VIEWED" }
-  else if (currentMetric == "likes") { tableTitleMetric = "MOST LIKED" }
-  else if (currentMetric == "dislikes") { tableTitleMetric = "MOST DISLIKED" }
-  else if (currentMetric == "comments") { tableTitleMetric = "MOST COMMENTED ON" }
+  if (currentMetric == "views") { tableTitleMetric = "VIEWED" }
+  else if (currentMetric == "likes") { tableTitleMetric = "LIKED" }
+  else if (currentMetric == "dislikes") { tableTitleMetric = "DISLIKED" }
+  else if (currentMetric == "comments") { tableTitleMetric = "COMMENTED ON" }
 
   tableTitleCategory = currentCategory.toUpperCase();
 
   // Table head
-  var tableTitle = `TOP 10 ${tableTitleMetric} VIDEOS IN ${tableTitleCategory} CATERGORY FOR ${currentCountry}`
+  var tableTitle = `TOP 10 MOST ${tableTitleMetric} VIDEOS IN ${tableTitleCategory} CATERGORY FOR ${currentCountry}`
   teehead = d3.select("thead");
   teehead.html("");
   // // Append the 1st row of the header (Table title)
   var thRow = teehead.append("tr");
-  thRow.append("th").text(tableTitle);
+  thRow.append("th").text(tableTitle).attr('colspan', 10);
   // Append the 2nd row of the header (Table title)
   var thRow = teehead.append("tr");
   thRow.append("th").text("Country")

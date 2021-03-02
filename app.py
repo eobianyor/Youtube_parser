@@ -26,10 +26,10 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-# try:
-#     db_uri = os.environ['DATABASE_URL']
-# except KeyError:
-#     db_uri = "Insert Local Database"
+try:
+    db_uri = os.environ['DATABASE_URL']
+except KeyError:
+    db_uri = "{dbuser}:{dbpassword}@database-1.cvmfiiilpm7y.us-east-1.rds.amazonaws.com:{dbport}/{dbname}"
 
 # print(db_uri)
 # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
@@ -48,8 +48,8 @@ engine = create_engine(
 session = Session(engine)
 connection = engine.connect()
 
-youtubeVids = pd.read_sql(f"SELECT * FROM youtube_table", connection)
-# youtubeVids = pd.read_sql(f"SELECT * FROM youtube_table2", connection)
+# youtubeVids = pd.read_sql(f"SELECT * FROM youtube_table", connection)
+youtubeVids = pd.read_sql(f"SELECT * FROM youtube_table2", connection)
 # Fix the 29 vs Non profits issue
 youtubeVids['categoryId'] = youtubeVids['categoryId'].replace(
     ["29"], "Nonprofits & Activism")
